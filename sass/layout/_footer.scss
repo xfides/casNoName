@@ -1,0 +1,28 @@
+@use "../base/mixin" as *;
+
+footer {
+  margin-top: 1.56em;
+}
+
+.footer__text {
+  flex: 0 1 calc(100% - 100px);
+  margin-bottom: 1.5em;
+}
+
+.footer__icon {
+  flex: 0 0 85px;
+  margin-left: auto;
+}
+
+.footer__bottom {
+  margin-top: 1.5em;
+}
+.footer__row {
+  @include row(jsb, as);
+}
+
+.footer__logo {
+  @include bp(650px) {
+    margin-bottom: 1em;
+  }
+}

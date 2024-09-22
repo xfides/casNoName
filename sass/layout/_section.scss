@@ -1,0 +1,239 @@
+@use "../base/mixin" as *;
+/*jumbotron*/
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  min-height: 384px;
+  padding: 45px 1.25em;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron__content {
+  max-width: 500px;
+}
+
+.jumbotron__topline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: max-content;
+  .info {
+    flex: 0 1 auto;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+  .icon {
+    flex: 0 1 auto;
+    align-self: center;
+    margin-left: 0.5em;
+  }
+  img {
+    display: block;
+  }
+  .shadow {
+    flex: 0 1 100%;
+    margin-bottom: 1.5em;
+    font-size: 14px;
+    color: #192a32;
+    text-transform: uppercase;
+  }
+}
+
+.jumbotron__title {
+  text-transform: uppercase;
+}
+
+.jumbotron__actions {
+  display: inline-block;
+  margin-top: 1em;
+  .notice {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.jumbotron__btn {
+  min-width: 215px;
+  border: 1px solid;
+  box-shadow: 0px 4px 18px rgba(14, 24, 17, 0.25);
+}
+
+/*carousel*/
+
+.carousel {
+  overflow: auto;
+  padding-bottom: 0.5em;
+  scrollbar-color: #888 #555;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+.carousel__list {
+  display: flex;
+}
+
+.carousel__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 90px;
+  padding: 0.95em;
+  border-radius: 6px;
+  background-color: #f6f6f6;
+  box-shadow: 10px 5px 13px 0px rgba(34, 60, 80, 0);
+
+  overflow: hidden;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1px;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(16, 76, 84, 0.2);
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-radius: 8px;
+    background-color: #2e9344;
+    transition: height 0.3s linear;
+  }
+  &:hover {
+    background-color: #fff;
+    box-shadow: 10px 5px 13px 0px rgba(34, 60, 80, 0.2);
+    z-index: 2;
+    &:before {
+      height: 0.5em;
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.carousel__icon {
+  width: 32px;
+  margin: 0 auto 0.5em auto;
+}
+
+.carousel__caption {
+  font-size: 0.625em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/*facts*/
+
+.facts__item {
+  @include row();
+  gap: 0 2em;
+  padding: 0.625em 1.25em;
+  border-bottom: 1px solid var(--border);
+}
+
+.facts__caption,
+.support__caption,
+.caption {
+  @include row(jst, ac);
+  flex: 0 1 calc(33% - 1em);
+  gap: 0 0.75em;
+  .icon {
+    flex: 0 0 16px;
+  }
+  .label {
+    flex: 0 1 calc(100% - 1.75em);
+  }
+  @include bp(850px) {
+    flex: 1 1 100%;
+    margin-bottom: 1.5em;
+  }
+}
+.facts__info,
+.support__info,
+.info {
+  flex: 0 1 calc(67% - 1em);
+  @include bp(850px) {
+    flex: 1 1 100%;
+  }
+}
+
+/*support*/
+
+.support {
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.support__item {
+  padding: 2em 1.25em 0.625em 0.2em;
+  border-bottom: 1px solid var(--text);
+}
+
+/*faq*/
+
+.faq__item {
+  + .faq__item {
+    margin-top: 1em;
+  }
+  &.open {
+    .faq__body {
+      //max-height: fit-content;
+      overflow: hidden;
+      max-height: 3000px;
+      visibility: visible;
+    }
+    .faq__icon {
+      transform: scaleY(-1);
+    }
+  }
+}
+
+.faq__label {
+  @include row(jsb, ac);
+  flex-wrap: nowrap;
+  padding: 1.2em;
+  border: 1px solid var(--border);
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.faq__icon {
+  transform: scaleY(1);
+  flex: 0 0 24px;
+  transition: transform 0.3s linear;
+}
+
+.faq__body {
+  background-color: var(--lightBg);
+  border-radius: 0 0 6px 6px;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+}
+
+.faq__text {
+  padding: 1em 0.75em;
+}

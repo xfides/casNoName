@@ -1,0 +1,111 @@
+@use "../base/mixin" as *;
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0.8em 1.5em;
+  border-radius: 1em;
+  font-weight: 600;
+  background-color: var(--btns);
+
+  .icon {
+    margin-right: 0;
+  }
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.lang__label {
+  margin: 0 5px 0 10px;
+}
+
+.notice {
+  margin-top: 10px;
+  font-size: 6px;
+}
+
+/*raiting*/
+
+.raiting__item {
+  display: grid;
+  grid-template-columns: 2fr 2fr auto;
+  grid-template-areas: "label stars value";
+  gap: 0.5em 0.675em;
+  align-items: center;
+  padding: 0.87em 1.5em;
+  border-radius: 0.5em;
+  background-color: var(--bg);
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include bp(1150px) {
+    grid-template-columns: 90% 10%;
+    grid-template-areas: "label label" "stars value";
+  }
+
+  @include bp(850px) {
+    grid-template-columns: 2fr 2fr auto;
+    grid-template-areas: "label stars value";
+  }
+  @include bp(650px) {
+    grid-template-columns: 80% 20%;
+    grid-template-areas: "label value" "stars stars";
+  }
+}
+
+.raiting__libel {
+  flex: 0 1 40%;
+  padding-right: 0.625em;
+  font-weight: 600;
+  grid-area: label;
+}
+
+.stars,
+.stars__list {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5em;
+}
+
+.stars {
+  flex-wrap: wrap;
+  flex: 1 1 60%;
+  grid-area: stars;
+}
+
+.stars__item {
+  color: var(--light);
+
+  svg,
+  img {
+    display: block;
+    width: 2em;
+  }
+
+  &.fill {
+    color: var(--accent3);
+  }
+
+  @include bp(1150px) {
+    font-size: 14px;
+  }
+
+  @include bp(650px) {
+    font-size: 10px;
+  }
+}
+
+.raiting__value {
+  font-size: 14px;
+  grid-area: value;
+  text-align: right;
+  font-weight: 400;
+}

@@ -1,0 +1,186 @@
+@use "mixin" as *;
+
+html {
+  font-family: var(--ff);
+  color: var(--text);
+  font-size: var(--fz);
+  // height: -webkit-fill-available;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  // min-height: -webkit-fill-available;
+}
+
+.wrapper {
+  position: relative;
+  min-width: 320px;
+  min-height: 100vh;
+  // height: 100%;
+  flex-grow: 1;
+  background-color: var(--dark);
+  background-repeat: no-repeat;
+  background-position: 0 0, 50% 50%, -10% 100%;
+  background-size: 99% auto;
+  overflow: hidden;
+}
+
+.footer {
+  flex-grow: 0;
+}
+
+a {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+img {
+  display: inline-block;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h1,
+.jumbotron__title {
+  @include fFS(30px, 40px, 320px, 1900px, 20px);
+}
+
+h2,
+.section__title {
+  margin-bottom: 0.6em;
+  @include fFS(35px, 48px, 320px, 1900px, 20px);
+
+  &--bordered {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 8px;
+      width: 100%;
+      height: 2px;
+      background-color: var(--border);
+    }
+
+    //text-decoration: underline;
+    //text-underline-offset: 16px;
+    // text-decoration-color: var(--border);
+  }
+
+  &--less {
+    @include fFS(35px, 40px, 320px, 1900px, 20px);
+  }
+
+  &--paddingRight {
+    padding-right: 150px;
+    @include bp(1000px) {
+      padding-right: 0;
+    }
+  }
+}
+
+h3,
+.section__subtitle {
+  @include fFS(25px, 32px, 320px, 1900px, 20px);
+}
+
+p {
+  margin: 0;
+
+  + p {
+    margin-top: 1.5em;
+  }
+
+  a {
+    color: var(--accent2);
+  }
+}
+
+.section,
+.footer {
+  padding: 1.87em 1.56em;
+  border-radius: 6px;
+  background-color: #fff;
+  overflow: hidden;
+
+  + .section {
+    margin-top: 1.56em;
+  }
+}
+
+.section__block {
+  + .section__block {
+    margin-top: 2.5em;
+  }
+
+  ul,
+  ol {
+    margin: 1.5em 0;
+
+    li {
+      position: relative;
+      padding-left: 1.5em;
+
+      + li {
+        margin-top: 1.5em;
+      }
+
+      &:before {
+        position: absolute;
+
+        left: 0.25em;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: nCounter 0;
+
+    li {
+      &:before {
+        content: counter(nCounter);
+        counter-increment: nCounter;
+
+        color: var(--accent2);
+      }
+    }
+  }
+
+  ul {
+    li {
+      &:before {
+        content: "";
+        top: 0.65em;
+        width: 6px;
+        height: 2px;
+        background-color: var(--text);
+      }
+    }
+  }
+}
+
+.section__actions {
+  @include row();
+  gap: 0 1em;
+  margin-top: 1.5em;
+}
+
+/*helpers*/
+
+._altColor {
+  color: #fff;
+}

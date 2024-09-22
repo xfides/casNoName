@@ -1,0 +1,29 @@
+@use "../base/mixin" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: calc(100% - 295px - 1.25em) 295px;
+  gap: 0 1.25em;
+  margin-top: 1.25em;
+  @include bp(850px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.row {
+  @include row(jst, ast);
+}
+
+.text-col {
+  flex: 0 1 calc(100% - 210px);
+  @include bp(850px) {
+    flex: 1 1 100%;
+  }
+}
+
+.actions-col {
+  margin-left: auto;
+  @include bp(850px) {
+    margin: 1.5em 0 0 0;
+  }
+}

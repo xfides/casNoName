@@ -1,0 +1,109 @@
+@use "../base/mixin" as *;
+
+/*widgets*/
+
+.widget {
+  margin-bottom: 1.25em;
+}
+
+.widgets {
+  @include bp(850px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+    margin-top: 1.5em;
+  }
+  @include bp(650px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.widgets__header {
+  padding: 1.25em 1.5em;
+  text-align: center;
+  background-color: var(--text);
+}
+
+.widgets__body {
+  padding: 1.25em 0;
+  border-radius: 0 0 6px 6px;
+  background-color: #fff;
+}
+
+.events__item {
+  color: var(--lightText);
+  transition: all 0.3s linear;
+  a {
+    @include row(jst, ac);
+    padding: 0.5em 0.85em;
+  }
+  .icon {
+    flex: 0 0 24px;
+    margin-right: 0.75em;
+  }
+  &:hover {
+    color: #fff;
+    background-color: var(--text);
+  }
+}
+
+/*tiles*/
+
+.tiles__list {
+  @include row();
+  gap: 0.675em;
+  padding: 0 1.55em;
+}
+
+.tiles__item {
+  position: relative;
+  flex: 0 0 calc(50% - 0.35em);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    .tiles__content {
+      transform: translateY(0);
+    }
+  }
+}
+
+.tiles__cover {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 120px;
+  height: 130px;
+  @include bp(850px){
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+  }
+}
+
+.tiles__content {
+  position: absolute;
+  transform: translateY(100%);
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(#1a3769, 0.8);
+  transition: transform 0.3s linear;
+  span,
+  a {
+    display: block;
+  }
+  span {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}

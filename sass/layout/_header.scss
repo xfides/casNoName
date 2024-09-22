@@ -1,0 +1,125 @@
+@use "../base/mixin" as *;
+
+.header {
+  position: relative;
+  padding: 12px 0;
+  background-color: var(--text);
+  color: #fff;
+  @include bp(121.25em) {
+    font-size: 14px;
+  }
+}
+
+.header__grid {
+  @include row(jsb, ac);
+}
+
+.menu {
+  @include row(jst, ac);
+  flex: 3 1 auto;
+  background-color: var(--text);
+  @include bp(1100px) {
+    &.open {
+      .menu__list {
+        display: flex;
+      }
+    }
+  }
+  @include bp(600px) {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    max-height: 100vh;
+    overflow: auto;
+    &.open {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.menu__list,
+.submenu {
+  @include row(jst, ac);
+  gap: 0 1.375em;
+  @include bp(600px) {
+    flex-direction: column;
+    align-items: start;
+    gap: 1em 0;
+  }
+}
+.menu__list {
+  background-color: inherit;
+  flex: 3 1 auto;
+  @include bp(1100px) {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    padding: 0 1.25em 1.875em 1.25em;
+  }
+  @include bp(600px) {
+    position: static;
+    display: flex;
+  }
+}
+.submenu {
+  gap: 0 1em;
+  @include bp(1100px) {
+    margin-left: auto;
+  }
+  @include bp(600px) {
+    padding: 0 1.25em 1.875em 1.25em;
+    gap: 1em 0;
+  }
+}
+
+.logo {
+  width: 7.5em;
+  margin-right: 1.75em;
+}
+
+.menu__link {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0.8em 1.5em;
+  border-radius: 1em;
+  font-weight: 600;
+  background-color: var(--btns);
+
+  .icon {
+    margin-right: 0.625em;
+  }
+}
+
+.submenu__btn {
+  text-transform: uppercase;
+  padding: 0.8em 2em;
+  border-radius: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s linear;
+  &.accent {
+    background-color: var(--accent);
+    &:hover {
+      background-color: var(--accent2);
+    }
+  }
+  &.accent2 {
+    background-color: var(--accent2);
+    &:hover {
+      background-color: var(--accent);
+    }
+  }
+}
+
+/**/
+.menu-trigger {
+  display: none;
+  @extend .menu__link;
+  margin-left: 1.5em;
+  @include bp(1100px) {
+    display: block;
+  }
+}
